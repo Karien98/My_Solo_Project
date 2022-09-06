@@ -1,0 +1,15 @@
+Name: Karien Lessing
+ Project Title: Photographer's Kaleidoscope
+ Project Stack: Python
+ GitHub Repo Link: https://github.com/Karien98/My_Solo_Project
+
+ Project Description: Platform for photographers to upload their work. When uploading(creating) post users need to fill in required fields for the post to be created. Users will be able to react to the uploads. Posts can be edited and/or deleted if wanted. 
+ 
+New Programming Concept(s) I'm Planning to Learn: -Closure, -Decorators, -google_trans_new
+
+Week 1 Features (to show at Review during Week 2)
+
+Week 2 Features (to show at the first office hour/lecture of Week 3)
+
+
+Product Backlog (If I have more time after completing my MVP, I'll start to work on...)some older projects to see if I can improve them. Or start a new project, like a game.
