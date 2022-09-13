@@ -1,16 +1,15 @@
 from flask_app.config.mysqlconnections import connectToMySQL
-from .upload import Upload
+from .post import Post
 import re
 EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9.+_-]+\.[a-zA-Z0-9.+_-]+$')
 from flask import flash
 
 class User: 
-    db = "solo_project"
+    db = "photographer's_kaleidoscope"
     def __init__(self, db_data):
         self.id = db_data['id']
         self.first_name = db_data['first_name']
         self.last_name = db_data['last_name']
-        self.username = db_data['username']
         self.email = db_data['email']
         self.password = db_data['password']
         self.created_at = db_data['created_at']
@@ -19,7 +18,7 @@ class User:
 
     @classmethod
     def save(cls, data):
-        query = "INSERT INTO users (first_name, last_name, username, email, password) VALUES(%(first_name)s , %(last_name)s , %(username)s, %(email)s , %(password)s);"
+        query = "INSERT INTO users (first_name, last_name, email, password) VALUES(%(first_name)s , %(last_name)s , %(email)s , %(password)s);"
         return connectToMySQL(cls.db).query_db(query, data)
     
     @classmethod
@@ -57,15 +56,12 @@ class User:
         if not EMAIL_REGEX.match(user['email']):
             flash("Invaild Email", "register")
             is_valid = False
-        if len(user['first_name']) < 5:
+        if len(user['first_name']) < 2:
             is_valid = False
-            flash("First Name must be at least 5 characters." , "register")
-        if len(user['last_name']) < 5:
+            flash("First Name must be at least 2 characters." , "register")
+        if len(user['last_name']) < 2:
             is_valid = False
-            flash("Last Name must be at least 5 characters.", "register")
-        if len(user['username']) < 5:
-            is_valid = False
-            flash("Username must be at least 5 characters.", "register")
+            flash("Last Name must be at least 2 characters.", "register")
         if len(user['password']) < 8:
             is_valid = False
             flash("Password must be at least 8 characters.", "register")

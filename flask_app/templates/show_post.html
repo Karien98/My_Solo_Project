@@ -36,32 +36,25 @@
                     <div>
                     </div class="d-flex align-items-center">
                     <span class="nav-text fw-bold" >{{user.first_name}} {{user.last_name}}</span>
-                    <a class="nav-link" href="/new/post">Create Post</a>
+                    <a class="nav-link" href="/dashboard">Dashboard</a>
                     <a href="/logout" class="btn btn-secondary">Logout</a>
                 </div>
             </div>
         </nav>
-        <div class="container">
-            <div class="row">
-                <div class="col-12 col-sm-8 col-lg-5">
-                    <h6 class="text-muted">Posts</h6>
-                    <ul class="list-group list-group">
-                        {%for post in posts%}
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            {{post.title}} - {{post.upload_image}}
-                            By: {{post.user.first_name}} {{post.user.last_name}}
-                            <div class="button-items">
-                                {%if post.user_id == session.user_id%}
-                                    <a href="/edit/post/{{post.id}}" class="btn btn-info">Edit</a> | 
-                                    <a href="/destroy/post/{{post.id}}" class="btn btn-danger">Delete</a>
-                                    {%else%}
-                                    <a href="/post/{{post.id}}" class="btn btn-info">Details</a>
-                                {%endif%}
-                            </div>
-                        </li>
-                    {%endfor%}
-                    </ul>
-                </div>
+        <br/>
+        <div class="card text-center">
+            <div class="card-header" style="background-color: #5BD9F4 ;">
+                {{post.title}} on {{post.upload_image}}
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Description</h5>
+                <p class="card-text">{{post.description}}</p>
+                <p class="card-text">Location: {{post.location}}</p>
+                <p class="card-text">Subject: {{post.subject}}</p>
+                <p class="card-text">Shutter Speed: {{post.shutter_speed}}</p>
+                <p class="card-text">Aperture: {{post.aperture}}</p>
+                <p class="card-text">ISO: {{post.iso}}</p>
+                <p class="card-text">Focal Length: {{post.focal_length}}</p>
             </div>
         </div>
     </body>

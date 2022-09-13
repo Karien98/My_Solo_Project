@@ -1,7 +1,7 @@
 from flask import render_template, redirect, request, session, flash
 from flask_app import app
 from flask_app.models.user import User
-from flask_app.models.upload import Upload
+from flask_app.models.post import Post
 from flask_bcrypt import Bcrypt
 bcrypt = Bcrypt(app)
 
@@ -16,7 +16,6 @@ def register():
     data = {
         "first_name": request.form['first_name'],
         "last_name": request.form['last_name'],
-        "username": request.form['username'],
         "email": request.form['email'],
         "password" : bcrypt.generate_password_hash(request.form['password'])
     }
@@ -48,7 +47,7 @@ def dashboard():
     data ={
         'id': session['user_id']
     }
-    return render_template('dashboard.html', user = User.get_one(data), uploads = Upload.get_user_report())
+    return render_template('dashboard.html', user = User.get_one(data), posts = Post.get_user_report())
 
 @app.route('/logout')
 def logout():
